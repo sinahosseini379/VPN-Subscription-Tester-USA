@@ -470,8 +470,9 @@ async def run_pipeline(sub_urls: list[str], cores: Cores, settings: Settings) ->
     # FINAL SAFETY: Ensure only allowed countries remain (handles any edge cases)
     allowed = set(settings.allowed_countries.keys())
     if allowed:
+        allowed_list = ", ".join(allowed)
         top = [c for c in top if c.country in allowed]
-        log.info("Final country filter: %d configs remain (allowed: %s)", len(top), ", ".join(allowed))
+        log.info("Final country filter: %d configs remain (allowed: %s)", len(top), allowed_list)
 
     assign_indices(top)
     log.info("=" * 65)
