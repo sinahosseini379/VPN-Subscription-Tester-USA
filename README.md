@@ -11,14 +11,13 @@
 - **فقط آمریکا**: خروجی فقط شامل کانفیگ‌های کشور آمریکا (US) است
 - **۸ کانفیگ برتر**: به جای ۲ کانفیگ در اشتراک اصلی، اینجا ۸ کانفیگ برتر آمریکا نگه داشته می‌شوند
 - **زمان‌بندی**: هر روز ساعت **۰۴:۳۴** به وقت تهران (Asia/Tehran)
-- **فایل‌های جداگانه**: خروجی هم در `felfelconfig.txt` و هم در `felfelconfig-US.txt` منتشر می‌شود
+- **فایل واحد**: خروجی فقط در `felfelconfig.txt` منتشر می‌شود (فایل‌های جداگانه غیرفعال)
 
 ## لینک‌های مستقیم اشتراک
 
 | نوع | لینک مستقیم (Raw) |
 |-----|-------------------|
 | **Base64 (همه اپلیکیشن‌ها)** | `https://raw.githubusercontent.com/sinahosseini379/VPN-Subscription-Tester-USA/main/felfelconfig.txt` |
-| **فقط آمریکا (فایل جداگانه)** | `https://raw.githubusercontent.com/sinahosseini379/VPN-Subscription-Tester-USA/main/felfelconfig-US.txt` |
 
 > **نکته:** همه اپلیکیشن‌های مدرن VPN (SFA، sing-box، NekoBox، Clash Meta، v2rayNG، Shadowrocket، Streisand، Hiddify و…) یک URL اشتراک Base64 را می‌پذیرند. کافیست همین یک لینک را وارد کنید.
 
@@ -74,7 +73,7 @@ pip install -e ".[dev]"
 vpn-tester
 ```
 
-- به‌صورت پیش‌فرض یک حلقه زمان‌بندی‌شده به‌همراه داشبورد وب روی `http://0.0.0.0:30445` اجرا می‌شود.
+- به‌صورت پیش‌فرض یک حلقه زمان‌بندی‌شده به‌همراه داشبورد وب روی `http://0.0.0.0:30446` اجرا می‌شود.
 - برای یک اجرای تکی: `vpn-tester --once`
 - برای رد کردن مرحله‌ی ارسال به گیت‌هاب: `vpn-tester --no-push`
 - نیازمندی‌ها: **پایتون ۳.۹ به بالا**. هسته‌های Xray / sing-box / Hysteria به‌صورت خودکار دانلود و به‌روزرسانی می‌شوند.
@@ -84,19 +83,21 @@ vpn-tester
 | متغیر | پیش‌فرض USA | توضیح |
 |--------|-------------|-------|
 | `CONFIGS_PER_COUNTRY` | `8` | تعداد کانفیگ در **اشتراک اصلی** |
-| `PER_COUNTRY_OUTPUT_COUNT` | `8` | تعداد کانفیگ در **فایل جداگانه‌ی کشور** |
+| `PER_COUNTRY_OUTPUT` | `false` | غیرفعال‌سازی فایل‌های جداگانه‌ی کشور |
 | `SCHEDULE_TIME` | `04:34` | زمان اجرای روزانه (HH:MM) |
 | `TIMEZONE` | `Asia/Tehran` | منطقه زمانی برای زمان‌بندی |
 | `STEALTH_MODE` | `prefer` | `off` \| `prefer` \| `strict` — کنترل امتیازدهی Stealth |
 | `STEALTH_MIN_SCORE` | `0.4` | حداقل امتیاز (فقط در حالت `strict`) |
 | `ALLOWED_COUNTRIES` | `US:United States:🇺🇸` | فقط آمریکا مجاز است |
+| `DASHBOARD_PORT` | `30446` | پورت داشبورد وب |
 
 **پیشنهاد برای سرورهای ایران (سازگاری همه اپراتورها):**
 ```env
 STEALTH_MODE=strict
 STEALTH_MIN_SCORE=0.5
 CONFIGS_PER_COUNTRY=8
-PER_COUNTRY_OUTPUT_COUNT=8
+PER_COUNTRY_OUTPUT=false
+DASHBOARD_PORT=30446
 ```
 
 این تنظیمات باعث می‌شود کانفیگ‌های با Security ضعیف (plaintext، TCP خام، Shadowsocks ساده) قبل از تست‌های وقت‌گیر حذف شوند و فقط کانفیگ‌های پرامتیاز (VLESS+Reality+WS، VLESS+TLS+WS، Trojan+TLS+WS) در خروجی باقی بمانند.
