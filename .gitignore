@@ -7,6 +7,9 @@ config.env
 # Output & runtime artifacts
 best_configs.txt
 best_configs.txt.meta.json
+felfelconfig.txt
+felfelconfig.txt.meta.json
+felfelconfig-*.txt
 vpn_tester.log
 *.log
 repo/

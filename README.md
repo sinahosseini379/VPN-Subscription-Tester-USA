@@ -1,22 +1,24 @@
 <div dir="rtl">
 
-# فیدل (Fiddel) — اشتراک رایگان کانفیگ VPN
+# فیدل USA (Fiddel USA) — اشتراک رایگان کانفیگ VPN فقط آمریکا
 
-یک اشتراک VPN رایگان و به‌روزرسانی‌شونده که هر روز ساخته می‌شود؛ بهینه برای کاربران داخل ایران و سراسر جهان. هر کانفیگ پیش از انتشار با پروسه‌های واقعی Xray / sing-box / Hysteria2 به‌صورت زنده تست می‌شود و فقط بهترین‌ها برای هر کشور نگه داشته می‌شوند.
+یک اشتراک VPN رایگان و به‌روزرسانی‌شونده که **هر روز ساعت ۰۴:۳۴ به وقت تهران** ساخته می‌شود؛ فقط با **۸ کانفیگ برتر آمریکا (🇺🇸)**. هر کانفیگ پیش از انتشار با پروسه‌های واقعی Xray / sing-box / Hysteria2 به‌صورت زنده تست می‌شود.
 
-نسخه: **۲.۴.۰**
+نسخه: **۳.۰.۰-usa**
 
-## ✨ قابلیت‌های جدید (v2.4.0)
+## ✨ تفاوت با نسخه اصلی
 
-- **امتیازدهی Stealth برای عبور از همه ISP‌های ایران:** هر کانفیگ بر اساس ۵ سیگنال (Security، Transport، Protocol، Fingerprint، Port) امتیازدهی می‌شود. کانفیگ‌هایی که روی اپراتور خاص (مثلا سامانتل) کار می‌کنند اما روی سایر اپراتورها (همراه اول، ایرانسل، رایتل) بلاک می‌شوند، شناسایی و فیلتر می‌گردند.
-- **دو سطح خروجی:** اشتراک اصلی (`felfelconfig.txt`) با ۲ کانفیگ برتر هر کشور برای استفاده روزمره، و فایل‌های جداگانه‌ی هر کشور (`felfelconfig-DE.txt` و...) با ۵ کانفیگ برتر برای کاربران پیشرفته.
-- **حالت‌های Stealth:** `off` (غیرفعال)، `prefer` (پیش‌فرض، امتیاز به عنوان Tiebreaker)، `strict` (حذف کانفیگ‌های ضعیف قبل از تست‌های سنگین).
+- **فقط آمریکا**: خروجی فقط شامل کانفیگ‌های کشور آمریکا (US) است
+- **۸ کانفیگ برتر**: به جای ۲ کانفیگ در اشتراک اصلی، اینجا ۸ کانفیگ برتر آمریکا نگه داشته می‌شوند
+- **زمان‌بندی**: هر روز ساعت **۰۴:۳۴** به وقت تهران (Asia/Tehran)
+- **فایل‌های جداگانه**: خروجی هم در `felfelconfig.txt` و هم در `felfelconfig-US.txt` منتشر می‌شود
 
 ## لینک‌های مستقیم اشتراک
 
 | نوع | لینک مستقیم (Raw) |
 |-----|-------------------|
-| **Base64 (همه اپلیکیشن‌ها)** | `https://raw.githubusercontent.com/sinahosseini379/VPN-Subscription-Tester-/main/felfelconfig.txt` |
+| **Base64 (همه اپلیکیشن‌ها)** | `https://raw.githubusercontent.com/sinahosseini379/VPN-Subscription-Tester-USA/main/felfelconfig.txt` |
+| **فقط آمریکا (فایل جداگانه)** | `https://raw.githubusercontent.com/sinahosseini379/VPN-Subscription-Tester-USA/main/felfelconfig-US.txt` |
 
 > **نکته:** همه اپلیکیشن‌های مدرن VPN (SFA، sing-box، NekoBox، Clash Meta، v2rayNG، Shadowrocket، Streisand، Hiddify و…) یک URL اشتراک Base64 را می‌پذیرند. کافیست همین یک لینک را وارد کنید.
 
@@ -52,24 +54,23 @@
 - **پروتکل‌ها:** VLESS، VMess، Trojan، Shadowsocks، Hysteria2
 - **ترنسپورت‌ها:** TCP، WebSocket، gRPC، HTTP/2، HTTPUpgrade، SplitHTTP
 - **امنیت:** TLS، Reality، none
-- **کشورهای خروجی (پیش‌فرض):** آلمان 🇩🇪، فنلاند 🇫🇮، هلند 🇳🇱، انگلستان 🇬🇧، آمریکا 🇺🇸، ترکیه 🇹🇷
+- **کشور خروجی:** فقط **آمریکا 🇺🇸**
 - **تست‌شده:** هر کانفیگ از طریق فیلتر TCP، تشخیص کشور خروجی و چند دور تست URL زنده عبور می‌کند.
-- **به‌روزرسانی روزانه:** طبق زمان‌بندی (پیش‌فرض ۰۴:۰۴ به وقت `Asia/Tehran`).
+- **به‌روزرسانی روزانه:** هر روز ساعت **۰۴:۳۴ به وقت `Asia/Tehran`**.
 
 ## به‌روزرسانی خودکار
 
 اشتراک یک راهنمای به‌روزرسانی خودکار به کلاینت اعلام می‌کند (`SUBSCRIPTION_INTERVAL_HOURS`، پیش‌فرض ۲۴ ساعت). اپلیکیشن‌های سازگار هر ۲۴ ساعت خودشان اشتراک را دوباره می‌گیرند. اگر اپلیکیشن شما به‌روزرسانی خودکار ندارد، روزی یک‌بار همان لینک را دوباره وارد کنید.
 
-> هدرهای پروفایل (`profile-title`، `subscription-userinfo`، `profile-update-interval`) فقط از مسیر داشبورد `‎/subscription‎` ارائه می‌شوند؛ فایل خام گیت‌هاب این هدرها را ندارد اما همان محتوا را دارد.
+> هدرهای پروفایل (`profile-title`، `subscription-userinfo`، `profile-update-interval`) فقط از مسیر داشبورد `/subscription` ارائه می‌شوند؛ فایل خام گیت‌هاب این هدرها را ندارد اما همان محتوا را دارد.
 
 ## راه‌اندازی شخصی (Self-Hosting) — شروع سریع
 
 ```bash
-git clone https://github.com/sinahosseini379/VPN-Subscription-Tester-
-cd VPN-Subscription-Tester-
+git clone https://github.com/sinahosseini379/VPN-Subscription-Tester-USA
+cd VPN-Subscription-Tester-USA
 pip install -e ".[dev]"
-cp config.env.example config.env
-# GITHUB_TOKEN و در صورت نیاز GITHUB_OWNER / GITHUB_REPO را در config.env تنظیم کنید
+# config.env همیشه با توکن و تنظیمات USA موجود است
 vpn-tester
 ```
 
@@ -80,29 +81,30 @@ vpn-tester
 
 ## تنظیمات پیشرفته (config.env)
 
-| متغیر | پیش‌فرض | توضیح |
-|--------|---------|-------|
-| `CONFIGS_PER_COUNTRY` | `2` | تعداد کانفیگ هر کشور در **اشتراک اصلی** |
-| `PER_COUNTRY_OUTPUT_COUNT` | `5` | تعداد کانفیگ هر کشور در **فایل‌های جداگانه‌ی کشور** |
+| متغیر | پیش‌فرض USA | توضیح |
+|--------|-------------|-------|
+| `CONFIGS_PER_COUNTRY` | `8` | تعداد کانفیگ در **اشتراک اصلی** |
+| `PER_COUNTRY_OUTPUT_COUNT` | `8` | تعداد کانفیگ در **فایل جداگانه‌ی کشور** |
+| `SCHEDULE_TIME` | `04:34` | زمان اجرای روزانه (HH:MM) |
+| `TIMEZONE` | `Asia/Tehran` | منطقه زمانی برای زمان‌بندی |
 | `STEALTH_MODE` | `prefer` | `off` \| `prefer` \| `strict` — کنترل امتیازدهی Stealth |
 | `STEALTH_MIN_SCORE` | `0.4` | حداقل امتیاز (فقط در حالت `strict`) |
+| `ALLOWED_COUNTRIES` | `US:United States:🇺🇸` | فقط آمریکا مجاز است |
 
 **پیشنهاد برای سرورهای ایران (سازگاری همه اپراتورها):**
 ```env
 STEALTH_MODE=strict
 STEALTH_MIN_SCORE=0.5
-CONFIGS_PER_COUNTRY=2
-PER_COUNTRY_OUTPUT_COUNT=5
+CONFIGS_PER_COUNTRY=8
+PER_COUNTRY_OUTPUT_COUNT=8
 ```
 
 این تنظیمات باعث می‌شود کانفیگ‌های با Security ضعیف (plaintext، TCP خام، Shadowsocks ساده) قبل از تست‌های وقت‌گیر حذف شوند و فقط کانفیگ‌های پرامتیاز (VLESS+Reality+WS، VLESS+TLS+WS، Trojan+TLS+WS) در خروجی باقی بمانند.
 
 ## داشبورد
 
-<!-- تصویر داشبورد: TODO یک اسکرین‌شات از داشبورد زنده روی پورت 30445 اینجا قرار دهید -->
-`![Fiddel dashboard](docs/dashboard.png)`
-
 داشبورد پیشرفت زنده، لاگ‌های جاری، کانفیگ‌های منتشرشده، مدیریت لیست اشتراک‌ها و ویرایش زمان‌بندی را نشان می‌دهد.
+دسترسی: `http://<server-ip>:30445`
 
 ## حریم خصوصی
 
@@ -117,67 +119,42 @@ PER_COUNTRY_OUTPUT_COUNT=5
 ## حمایت
 
 اگر این پروژه برایتان مفید بود، لطفاً به مخزن گیت‌هاب ⭐ بدهید:
-[github.com/sinahosseini379/VPN-Subscription-Tester-](https://github.com/sinahosseini379/VPN-Subscription-Tester-)
+[github.com/sinahosseini379/VPN-Subscription-Tester-USA](https://github.com/sinahosseini379/VPN-Subscription-Tester-USA)
 
 </div>
 
 ---
 
-# Fiddel — Free VPN Config Subscription
+# Fiddel USA — Free VPN Config Subscription (USA Only)
 
-A free, daily-rebuilt VPN subscription optimized for users in Iran and worldwide. Every config is **live-tested** through real Xray / sing-box / Hysteria2 processes before it is published, and only the best configs per country are kept.
+A free, daily-rebuilt VPN subscription with **only 8 best USA configs (🇺🇸)**, updated daily at **04:34 Asia/Tehran**. Every config is **live-tested** through real Xray / sing-box / Hysteria2 processes before it is published.
 
-Version: **2.4.0**
+Version: **3.0.0-usa**
 
-## ✨ New in v2.4.0
+## ✨ Differences from Main Version
 
-- **Stealth scoring for cross-ISP resilience:** Each config is scored on 5 signals (Security, Transport, Protocol, uTLS Fingerprint, Port) tuned for Iranian ISP filtering. Configs that work on one ISP (e.g., Samantel) but get blocked on others (MCI, Irancell, Rightel) are detected and filtered out.
-- **Dual output tiers:** Main subscription (`felfelconfig.txt`) with 2 best configs/country for daily use, plus per-country files (`felfelconfig-DE.txt`, etc.) with 5 best configs/country for power users.
-- **Stealth modes:** `off` (disabled), `prefer` (default, score as tiebreaker), `strict` (drop low-score configs before expensive tests).
+- **USA only**: Only United States exit country
+- **8 top configs**: Instead of 2 per country in main subscription, keeps 8 best USA configs
+- **Schedule**: Daily at **04:34 Asia/Tehran**
+- **Dual output**: Both `felfelconfig.txt` and `felfelconfig-US.txt` published
 
 ## Quick Subscription Links
 
 | Type | Direct (raw) link |
 |------|-------------------|
-| **Base64 (all apps)** | `https://raw.githubusercontent.com/sinahosseini379/VPN-Subscription-Tester-/main/felfelconfig.txt` |
+| **Base64 (all apps)** | `https://raw.githubusercontent.com/sinahosseini379/VPN-Subscription-Tester-USA/main/felfelconfig.txt` |
+| **USA only (separate file)** | `https://raw.githubusercontent.com/sinahosseini379/VPN-Subscription-Tester-USA/main/felfelconfig-US.txt` |
 
 > **Tip:** Every modern VPN app (SFA, sing-box, NekoBox, Clash Meta, v2rayNG, Shadowrocket, Streisand, Hiddify, …) accepts a single base64 subscription URL. Just paste this one link.
-
-## How to Add to Apps
-
-### Android
-| App | How to Add |
-|-----|------------|
-| **SFA / Sing-box** | `Profiles` → `Add` → `Remote` → Paste URL |
-| **NekoBox** | `Profile` → `Import from URL` → Paste URL |
-| **v2rayNG** | `+` → `Import from clipboard` (after copying URL) |
-| **Kitsunebi** | `+` → `Import from URI` → Paste URL |
-| **Hiddify** | `Config` → `Add Subscription` → Paste URL |
-
-### iOS / macOS
-| App | How to Add |
-|-----|------------|
-| **Shadowrocket** | `+` → `Subscribe` → Paste URL |
-| **Streisand** | `Subscriptions` → `Add` → Paste URL |
-| **FoXray** | `Configuration` → `Add Subscription` → Paste URL |
-| **Quantumult X** | `Subscription` → `Add` → Paste URL |
-
-### Windows / Linux
-| App | How to Add |
-|-----|------------|
-| **NekoRay** | `Server` → `Add from URL` → Paste URL |
-| **v2rayN** | `Subscription` → `Add` → Paste URL |
-| **Clash Verge / Verge Rev** | `Profiles` → `New` → `Remote` → Paste URL |
-| **GUI clients (v2rayA, etc.)** | Import subscription URL in settings |
 
 ## What's Inside
 
 - **Protocols:** VLESS, VMess, Trojan, Shadowsocks, Hysteria2
 - **Transports:** TCP, WebSocket, gRPC, HTTP/2, HTTPUpgrade, SplitHTTP
 - **Security:** TLS, Reality, none
-- **Exit countries (default):** Germany 🇩🇪, Finland 🇫🇮, Netherlands 🇳🇱, United Kingdom 🇬🇧, United States 🇺🇸, Turkey 🇹🇷
+- **Exit country:** **United States 🇺🇸 only**
 - **Tested:** every config passes a TCP filter, exit-country check, and several rounds of live URL tests.
-- **Daily updates:** on a schedule (default 04:04 `Asia/Tehran`).
+- **Daily updates:** on schedule (default 04:34 `Asia/Tehran`).
 
 ## Auto-Update
 
@@ -188,11 +165,10 @@ The subscription advertises an auto-update hint to clients (`SUBSCRIPTION_INTERV
 ## Self-Hosting Quick Start
 
 ```bash
-git clone https://github.com/sinahosseini379/VPN-Subscription-Tester-
-cd VPN-Subscription-Tester-
+git clone https://github.com/sinahosseini379/VPN-Subscription-Tester-USA
+cd VPN-Subscription-Tester-USA
 pip install -e ".[dev]"
-cp config.env.example config.env
-# Set GITHUB_TOKEN (and GITHUB_OWNER / GITHUB_REPO if different) in config.env
+# config.env already configured for USA
 vpn-tester
 ```
 
@@ -203,29 +179,30 @@ vpn-tester
 
 ## Advanced Configuration (config.env)
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `CONFIGS_PER_COUNTRY` | `2` | Configs per country in **main subscription** |
-| `PER_COUNTRY_OUTPUT_COUNT` | `5` | Configs per country in **per-country files** |
+| Variable | USA Default | Description |
+|----------|-------------|-------------|
+| `CONFIGS_PER_COUNTRY` | `8` | Configs in **main subscription** |
+| `PER_COUNTRY_OUTPUT_COUNT` | `8` | Configs in **per-country file** |
+| `SCHEDULE_TIME` | `04:34` | Daily run time (HH:MM) |
+| `TIMEZONE` | `Asia/Tehran` | IANA timezone for schedule |
 | `STEALTH_MODE` | `prefer` | `off` \| `prefer` \| `strict` — stealth scoring control |
 | `STEALTH_MIN_SCORE` | `0.4` | Minimum score (only in `strict` mode) |
+| `ALLOWED_COUNTRIES` | `US:United States:🇺🇸` | Only USA allowed |
 
 **Recommended for Iran servers (cross-ISP compatibility):**
 ```env
 STEALTH_MODE=strict
 STEALTH_MIN_SCORE=0.5
-CONFIGS_PER_COUNTRY=2
-PER_COUNTRY_OUTPUT_COUNT=5
+CONFIGS_PER_COUNTRY=8
+PER_COUNTRY_OUTPUT_COUNT=8
 ```
 
 This drops configs with weak security (plaintext, raw TCP, basic Shadowsocks) before expensive tests, keeping only high-score configs (VLESS+Reality+WS, VLESS+TLS+WS, Trojan+TLS+WS).
 
 ## Dashboard
 
-<!-- Dashboard image: TODO drop a screenshot of the live dashboard on port 30445 here -->
-`![Fiddel dashboard](docs/dashboard.png)`
-
 The dashboard shows live progress, streaming logs, published configs, subscription-list management, and schedule editing.
+Access: `http://<server-ip>:30445`
 
 ## Privacy
 
@@ -240,8 +217,4 @@ This project only collects and tests **publicly available** proxy configurations
 ## Support / Star
 
 If this helped you, please ⭐ the GitHub repository:
-[github.com/sinahosseini379/VPN-Subscription-Tester-](https://github.com/sinahosseini379/VPN-Subscription-Tester-)
-
-## Documentation
-
-Full technical documentation lives in the [wiki](wiki/Home.md): Architecture, Configuration, Core Management, Pipeline, Incremental Runs, Dashboard API, GitHub Push, Deployment, and Testing.
+[github.com/sinahosseini379/VPN-Subscription-Tester-USA](https://github.com/sinahosseini379/VPN-Subscription-Tester-USA)
