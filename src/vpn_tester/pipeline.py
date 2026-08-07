@@ -362,6 +362,11 @@ async def quick_test_previous(
     """One fast URL round per previous config; keep the ones still alive."""
     if not configs:
         return []
+    # Filter out configs from disallowed countries first
+    allowed = set(settings.allowed_countries.keys())
+    configs = [c for c in configs if c.country in allowed]
+    if not configs:
+        return []
     await url_test_all(configs, cores, settings, rounds=1)
     weights = {label: w for label, _url, w in settings.test_urls}
     alive = [c for c in configs if c.weighted_error_rate(weights) <= settings.max_error_rate]
@@ -381,6 +386,7 @@ def merge_incremental(
     Total output is capped at configs_per_country * number of allowed countries,
     so the subscription stays a stable size across runs.
     """
+    allowed = set(settings.allowed_countries.keys())
     cap = settings.configs_per_country * max(1, len(settings.allowed_countries))
     merged: list[Config] = []
     seen: set[str] = set()
@@ -390,6 +396,8 @@ def merge_incremental(
     for c in previous_alive:
         if len(merged) >= cap:
             break
+        if c.country not in allowed:
+            continue
         country = c.country or "?"
         if per_country_count.get(country, 0) >= settings.configs_per_country:
             continue
