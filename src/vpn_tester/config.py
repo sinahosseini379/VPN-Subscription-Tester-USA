@@ -75,7 +75,7 @@ class Settings:
     timezone: str = "Asia/Tehran"
     max_concurrent: int = 10
     tcp_concurrency: int = 100  # max parallel TCP probes (pre-filter)
-    max_configs: int = 500  # hard cap on configs taken into the pipeline
+    max_configs: int = 1000  # hard cap on configs taken into the pipeline
     allow_insecure: bool = True  # tolerate self-signed/loose TLS (avoids false negatives)
     xray_startup_timeout: float = 15.0
     socks_port_base: int = 20000
