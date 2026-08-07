@@ -136,6 +136,9 @@ async def _latest_release(session: aiohttp.ClientSession, core: CoreDef) -> dict
             if resp.status != 200:
                 return None
             return await resp.json()
+    except aiohttp.ClientConnectorError as exc:
+        log.warning("Cannot reach GitHub API for %s core update (network): %s", core.name, exc)
+        return None
     except Exception as exc:
         log.warning("Cannot query latest %s release: %s", core.name, exc)
         return None
@@ -150,11 +153,15 @@ def _pick_asset(release: dict, core: CoreDef) -> str | None:
 
 
 async def _download(session: aiohttp.ClientSession, url: str, dest: Path) -> None:
-    async with session.get(url, timeout=DOWNLOAD_TIMEOUT) as resp:
-        resp.raise_for_status()
-        with open(dest, "wb") as fh:
-            async for chunk in resp.content.iter_chunked(1 << 16):
-                fh.write(chunk)
+    try:
+        async with session.get(url, timeout=DOWNLOAD_TIMEOUT) as resp:
+            resp.raise_for_status()
+            with open(dest, "wb") as fh:
+                async for chunk in resp.content.iter_chunked(1 << 16):
+                    fh.write(chunk)
+    except aiohttp.ClientConnectorError as exc:
+        log.warning("Cannot download core from GitHub (network): %s", exc)
+        raise RuntimeError(f"Network error downloading core: {exc}") from exc
 
 
 def _extract_member(archive: Path, binary: str, dest: Path, mode: str) -> None:
@@ -264,6 +271,10 @@ async def ensure_cores(settings: Settings) -> Cores:
 
             if target.exists() and installed:
                 log.info("Updating %s core: v%s -> v%s", core.name, installed, latest)
-            await _install_core(session, core, url, target)
-            setattr(cores, core.cores_field, str(target))
+            try:
+                await _install_core(session, core, url, target)
+                setattr(cores, core.cores_field, str(target))
+            except RuntimeError as exc:
+                log.warning("Failed to update %s core, using existing: %s", core.name, exc)
+                setattr(cores, core.cores_field, str(target) if target.exists() else "")
     return cores
