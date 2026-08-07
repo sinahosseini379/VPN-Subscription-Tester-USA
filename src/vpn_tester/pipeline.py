@@ -467,6 +467,12 @@ async def run_pipeline(sub_urls: list[str], cores: Cores, settings: Settings) ->
             alive = await quick_test_previous(previous, cores, settings)
             top = merge_incremental(top, alive, settings)
 
+    # FINAL SAFETY: Ensure only allowed countries remain (handles any edge cases)
+    allowed = set(settings.allowed_countries.keys())
+    if allowed:
+        top = [c for c in top if c.country in allowed]
+        log.info("Final country filter: %d configs remain (allowed: %s)", len(top), ", ".join(allowed))
+
     assign_indices(top)
     log.info("=" * 65)
     log.info("Top %d configs (by error-rate, stealth, latency):", len(top))
