@@ -1,8 +1,8 @@
 {
   "version": "3.0.0",
-  "generated_at": "2026-08-07T22:39:36+00:00",
+  "generated_at": "2026-08-08T09:01:26+00:00",
   "count": 3,
-  "avg_latency_ms": 408.71,
+  "avg_latency_ms": 583.03,
   "avg_error_rate": 0.0,
   "by_country": {
     "US": 3
@@ -42,9 +42,9 @@
       "flag": "🇺🇸",
       "error_rate": 0.0,
       "weighted_error_rate": 0.0,
-      "avg_latency_ms": 410.13,
-      "p50_ms": 347.93,
-      "p95_ms": 670.13,
+      "avg_latency_ms": 551.49,
+      "p50_ms": 509.37,
+      "p95_ms": 823.84,
       "samples": 4,
       "per_target": {
         "Google": {
@@ -77,9 +77,9 @@
       "flag": "🇺🇸",
       "error_rate": 0.0,
       "weighted_error_rate": 0.0,
-      "avg_latency_ms": 410.94,
-      "p50_ms": 221.03,
-      "p95_ms": 1157.16,
+      "avg_latency_ms": 598.47,
+      "p50_ms": 349.52,
+      "p95_ms": 1596.08,
       "samples": 20,
       "per_target": {
         "Google": {
@@ -104,17 +104,17 @@
       "name": "🇺🇸 United States | 03",
       "index": 3,
       "protocol": "vless",
-      "transport": "tcp",
+      "transport": "ws",
       "security": "none",
-      "stealth_score": 0.325,
+      "stealth_score": 0.415,
       "country": "US",
       "country_name": "United States",
       "flag": "🇺🇸",
       "error_rate": 0.0,
       "weighted_error_rate": 0.0,
-      "avg_latency_ms": 405.07,
-      "p50_ms": 263.9,
-      "p95_ms": 1009.2,
+      "avg_latency_ms": 599.12,
+      "p50_ms": 320.7,
+      "p95_ms": 1743.89,
       "samples": 20,
       "per_target": {
         "Google": {
